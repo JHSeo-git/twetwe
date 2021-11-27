@@ -1,11 +1,31 @@
 {
   "name": "twetwe",
+  "description": "Collect on something",
+  "version": "0.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHSeo-git/twetwe.git"
+  },
+  "author": {
+    "name": "JHSeo",
+    "email": "qnfqnfnf@gmail.com"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "typescript",
+    "wiki"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "prettier": "prettier --config .prettierrc --write \"src/**/*.{js,ts,jsx,tsx}\"",
+    "prepare-husky": "yarn husky install .husky",
+    "postinstall": "yarn prepare-husky"
   },
   "dependencies": {
     "next": "12.0.4",
@@ -17,6 +37,8 @@
     "@types/react": "17.0.37",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.0",
     "typescript": "4.5.2"
   }
 }
