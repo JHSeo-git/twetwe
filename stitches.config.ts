@@ -212,6 +212,8 @@ const {
       white: '#fff',
       hiContrast: '$mauve12',
       loContrast: 'white',
+
+      appColor: '$purple12',
     },
     fonts: {
       // base: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,

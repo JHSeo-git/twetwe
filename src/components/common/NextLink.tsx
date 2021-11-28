@@ -1,13 +1,12 @@
 import useLink from '@/hooks/useLink'
 import { styled } from '@stitches.js'
 import Link from 'next/link'
-import type { ComponentProps } from '@stitches/react'
 
 // TODO: next/link require a href prop, so type it here and override
 export type NextLinkProps = {
   href: string
   children: React.ReactNode
-} & ComponentProps<typeof StyledLink>
+} & React.ComponentProps<typeof StyledLink>
 
 function NextLink({ href, children, ...props }: NextLinkProps) {
   const linkInfo = useLink(href)
@@ -28,7 +27,7 @@ function NextLink({ href, children, ...props }: NextLinkProps) {
 
   return (
     <StyledLink {...props} href={linkInfo.href} passHref>
-      {children}
+      <a>{children}</a>
     </StyledLink>
   )
 }

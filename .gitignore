@@ -35,3 +35,12 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# env
+.env
+.env.local
+.env.development
+.env.production
+
+# d.ts
+*.d.ts

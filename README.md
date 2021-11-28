@@ -6,5 +6,5 @@ Collect on something
 
 - frontend
   - react
-  - nextjs
+  - nextjs: ^12.0.0 and use SWC
   - recoil

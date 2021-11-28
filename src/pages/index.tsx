@@ -1,15 +1,12 @@
-import NextLink from '@/components/common/NextLink'
-import type { NextPage } from 'next'
+import { styled } from '@stitches.js'
 
-const Home: NextPage = () => {
-  return (
-    <div>
-      <NextLink href="/">Home</NextLink>
-      <NextLink css={{ ml: '$2' }} href="https://github.com/JHSeo-git">
-        github
-      </NextLink>
-    </div>
-  )
+function Home() {
+  return <Container></Container>
 }
+
+const Container = styled('section', {
+  position: 'absolute',
+  inset: 0,
+})
 
 export default Home

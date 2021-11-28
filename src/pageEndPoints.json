@@ -1,0 +1,17 @@
+{
+  "title": "Page End Points",
+  "routes": [
+    {
+      "name": "Home",
+      "path": "/"
+    },
+    {
+      "name": "Sample",
+      "path": "/sample"
+    },
+    {
+      "name": "SampleForm",
+      "path": "/sample/form"
+    }
+  ]
+}
