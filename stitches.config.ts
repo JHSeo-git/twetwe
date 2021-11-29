@@ -233,7 +233,7 @@ const {
       9: '80px',
       maxWidth: '770px', // 48.125rem
       headerHeight: '70px', // 4.375rem
-      footerHeight: '120px', // 4.375rem
+      footerHeight: '70px', // 4.375rem
     },
     space: {
       1: '5px',

@@ -14,10 +14,7 @@ function Layout({ naked = false, children }: LayoutProps) {
   return (
     <Container>
       <Header />
-      <Main>
-        <SpaceHeader />
-        {children}
-      </Main>
+      <Main>{children}</Main>
       <Footer />
     </Container>
   )
@@ -25,14 +22,13 @@ function Layout({ naked = false, children }: LayoutProps) {
 
 const Container = styled('div', {
   height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
 })
 
 const Main = styled('main', {
+  flex: 1,
   position: 'relative',
-})
-
-const SpaceHeader = styled('div', {
-  height: '$headerHeight',
 })
 
 export default Layout

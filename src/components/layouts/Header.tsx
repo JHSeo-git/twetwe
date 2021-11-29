@@ -1,7 +1,8 @@
 import { styled } from '@stitches.js'
-import { ReactComponent as LogoSvg } from '@/assets/images/twe-logo.svg'
+import { ReactComponent as LogoSvg } from '@/assets/icons/twe-logo.svg'
 import Panel from '../common/Panel'
 import NextLink from '../common/NextLink'
+import ThemeButton from '../primitives/ThemeButton'
 
 export type HeaderProps = {}
 
@@ -12,6 +13,7 @@ function Header(props: HeaderProps) {
         <StyledLink href="/">
           <Logo />
         </StyledLink>
+        <ThemeButton />
       </HeaderPanel>
     </HeaderBox>
   )
@@ -19,10 +21,8 @@ function Header(props: HeaderProps) {
 
 const HeaderBox = styled('header', {
   height: '$headerHeight',
-  position: 'fixed',
+  position: 'sticky',
   top: 0,
-  left: 0,
-  right: 0,
   zIndex: '$fixed',
 
   width: '100%',

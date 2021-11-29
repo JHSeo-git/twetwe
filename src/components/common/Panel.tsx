@@ -5,6 +5,7 @@ export type PanelProps = {}
 const Panel = styled('div', {
   maxWidth: '$maxWidth',
   m: '0 auto',
+  px: '$4',
 
   variants: {
     fullWidth: {

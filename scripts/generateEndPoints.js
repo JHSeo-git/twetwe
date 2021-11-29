@@ -16,9 +16,9 @@ function walk(dir) {
   return fileList
 }
 
-function writeEndPointsFile(endPoints) {
+function write(endPoints) {
   const contents = endPoints.map((endPoint) => ({
-    name: makeCamelNameFromPath(endPoint),
+    name: makePathName(endPoint),
     path: endPoint,
   }))
 
@@ -31,7 +31,7 @@ function writeEndPointsFile(endPoints) {
   // console.log(JSON.stringify(serialized))
 }
 
-function makeCamelNameFromPath(path) {
+function makePathName(path) {
   if (path === '/') {
     return 'Home'
   }
@@ -69,7 +69,7 @@ function main() {
     endPoints.push(parsed)
   })
 
-  writeEndPointsFile(endPoints.sort((a, b) => (a > b ? 1 : -1)))
+  write(endPoints.sort((a, b) => (a > b ? 1 : -1)))
 }
 
 main()
