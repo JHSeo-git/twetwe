@@ -289,6 +289,10 @@ const {
         '0px 5px 16px -5px rgba(22, 23, 24, 0.35), 0px 5px 10px -7px rgba(22, 23, 24, 0.2)',
       interactiveShadow2:
         '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
+      muiDp8:
+        '0px 8px 10px 1px hsla(0,0%,0%,0.14), 0px 3px 14px 2px hsla(0,0%,0%,0.12), 0px 5px 5px -3px hsla(0,0%,0%,0.2)',
+      muiDp16:
+        '0px 16px 24px 2px hsla(0,0%,0%,0.14), 0px 6px 30px 5px hsla(0,0%,0%,0.12), 0px 8px 10px -5px hsla(0,0%,0%,0.2)',
     },
 
     letterSpacings: {},
@@ -481,7 +485,7 @@ const darkTheme = createTheme('dark-theme', {
 
     // semantic colors
     hiContrast: '$mauve12',
-    loContrast: '$mauve2',
+    loContrast: '$mauve3',
   },
 })
 
