@@ -21,8 +21,6 @@ function Footer(props: FooterProps) {
 
 const FooterBox = styled('footer', {
   height: '$footerHeight',
-  bc: '$sand2',
-  borderTop: '1px solid $sand5',
 
   top: '100vh',
   position: 'sticky',
