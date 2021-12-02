@@ -3,6 +3,7 @@ import { borderFlashAnimation } from '@/styles/animation'
 import { styled } from '@stitches.js'
 
 function Home() {
+  // TODO: styledInput component 빼야됨
   return (
     <Container>
       <Texlider text="TWE" />

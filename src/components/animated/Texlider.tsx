@@ -10,6 +10,7 @@ export type TexliderProps = {
   direction?: 'up' | 'down'
 }
 
+// TODO: IsmorphicFiberSturcture error로 인한 구조변경 필요
 function Texlider({ text, direction = 'up' }: TexliderProps) {
   const [slideOn, setSlideOn] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
