@@ -91,6 +91,7 @@ const Inner = styled('div', {
 })
 
 const Text = styled('span', {
+  userSelect: 'none',
   fontSize: '3.5rem',
   fontFamily: '$ubuntu',
   fontWeight: 'bold',
