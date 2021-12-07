@@ -3,11 +3,14 @@
  */
 import { useEffect, useLayoutEffect, useRef } from 'react'
 
+const useEnhancedEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
+
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback)
 
   // Remember the latest callback if it changes.
-  useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     savedCallback.current = callback
   }, [callback])
 
