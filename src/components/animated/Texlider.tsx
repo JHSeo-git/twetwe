@@ -1,16 +1,18 @@
+/**
+ * @see https://yourhome.fb.com/
+ */
 import useInterval from '@/hooks/useInterval'
 import { styled } from '@stitches.js'
 import { useEffect, useState } from 'react'
 
 const TRANSITION_SEC = 5
-const POST_DELAY_SEC = 1
+const POST_DELAY_SEC = 2
 
 export type TexliderProps = {
   text: string
   direction?: 'up' | 'down'
 }
 
-// TODO: IsmorphicFiberSturcture error로 인한 구조변경 필요
 function Texlider({ text, direction = 'up' }: TexliderProps) {
   const [slideOn, setSlideOn] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
@@ -92,7 +94,7 @@ const Inner = styled('div', {
 
 const Text = styled('span', {
   userSelect: 'none',
-  fontSize: '3.5rem',
+  fontSize: '5rem',
   fontFamily: '$ubuntu',
   fontWeight: 'bold',
   lineHeight: '1',
