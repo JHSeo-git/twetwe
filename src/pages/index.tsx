@@ -2,7 +2,6 @@ import Texlider from '@/components/animated/Texlider'
 import TextareaAutosize from 'react-textarea-autosize'
 import { styled } from '@stitches.js'
 import { useRef } from 'react'
-import Hero from '@/components/home/Hero'
 import Panel from '@/components/common/Panel'
 
 function Home() {
@@ -12,7 +11,9 @@ function Home() {
     <Container>
       <Texlider text="TWE" />
       <Box>
-        <Hero text="TWE" />
+        <HeroWrap>
+          <Content>TWE</Content>
+        </HeroWrap>
         <Panel
           css={{
             pt: '$4',
@@ -102,6 +103,21 @@ const StyledTextArea = styled(TextareaAutosize, {
       color: 'transparent',
     },
   },
+})
+
+const HeroWrap = styled('div', {
+  backgroundImage:
+    'linear-gradient(90deg, $colors$purple7 0%, $colors$crimson7 100%);',
+})
+
+const Content = styled('h1', {
+  m: 0,
+  minHeight: '200px',
+  color: '$hiContrast',
+
+  display: 'flex',
+  jc: 'center',
+  ai: 'center',
 })
 
 export default Home
