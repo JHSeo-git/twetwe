@@ -2,6 +2,8 @@ import Texlider from '@/components/animated/Texlider'
 import TextareaAutosize from 'react-textarea-autosize'
 import { styled } from '@stitches.js'
 import { useRef } from 'react'
+import Hero from '@/components/home/Hero'
+import Panel from '@/components/common/Panel'
 
 function Home() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -10,8 +12,15 @@ function Home() {
     <Container>
       <Texlider text="TWE" />
       <Box>
-        <StyledInput type="text" placeholder="Subject" />
-        <StyledTextArea rows={5} ref={textareaRef} placeholder="Short" />
+        <Hero text="TWE" />
+        <Panel
+          css={{
+            pt: '$4',
+          }}
+        >
+          <StyledInput type="text" placeholder="Subject" />
+          <StyledTextArea rows={5} ref={textareaRef} placeholder="Short" />
+        </Panel>
       </Box>
     </Container>
   )
@@ -20,17 +29,10 @@ function Home() {
 const Container = styled('section', {
   height: '100%',
   display: 'flex',
-  jc: 'center',
-  ai: 'center',
 })
 
 const Box = styled('div', {
-  maxWidth: '$maxWidth',
   width: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-
-  px: '$3',
 })
 
 const StyledInput = styled('input', {
@@ -38,6 +40,7 @@ const StyledInput = styled('input', {
 
   width: '100%',
 
+  my: '$2',
   py: '$3',
   px: '$4',
   br: '$4',
@@ -50,8 +53,6 @@ const StyledInput = styled('input', {
   color: '$mauve12',
 
   border: '1px solid transparent',
-
-  mb: '$4',
 
   '&::placeholder': {
     // color: 'transparent',
@@ -74,6 +75,7 @@ const StyledTextArea = styled(TextareaAutosize, {
 
   width: '100%',
 
+  my: '$2',
   py: '$3',
   px: '$4',
   br: '$4',
