@@ -1,8 +1,11 @@
-import Texlider from '@/components/animated/Texlider'
+import Texlider from '@/components/primitives/Texlider'
 import TextareaAutosize from 'react-textarea-autosize'
 import { styled } from '@stitches.js'
 import { useRef } from 'react'
 import Panel from '@/components/common/Panel'
+import ReplacedTexts from '@/components/primitives/ReplacedTexts'
+
+const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 노트']
 
 function Home() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -12,7 +15,9 @@ function Home() {
       <Texlider text="TWE" />
       <Box>
         <HeroWrap>
-          <Content>TWE</Content>
+          <Content>
+            <ReplacedTexts texts={HeroTexts} />
+          </Content>
         </HeroWrap>
         <Panel
           css={{
