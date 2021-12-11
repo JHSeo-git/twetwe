@@ -105,6 +105,4 @@ const Circle = styled(animated.circle, {
   transformOrigin: 'center center',
 })
 
-// css="transform-origin: center center; transform: scale(1);"
-
 export default ThemeButton

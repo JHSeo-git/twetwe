@@ -2,7 +2,6 @@ import useLink from '@/hooks/useLink'
 import { styled } from '@stitches.js'
 import Link from 'next/link'
 
-// TODO: next/link require a href prop, so type it here and override
 export type NextLinkProps = {
   href: string
   children: React.ReactNode
