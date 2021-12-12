@@ -7,6 +7,7 @@ export type ReplacedTextsProps = {
   timer?: number
 } & React.ComponentProps<typeof Text>
 
+// FIXME: 초기에 텍스트가 보이지 않는 구간이 존재하는데 왜 그런지 파악이 안됨
 function ReplacedTexts({ texts, timer = 5000, ...props }: ReplacedTextsProps) {
   const [textIdx, setTextIdx] = useState<number | null>(null)
   const [transition, setTransition] = useState<'in' | 'out'>('in')
@@ -29,7 +30,7 @@ function ReplacedTexts({ texts, timer = 5000, ...props }: ReplacedTextsProps) {
     }, timer)
 
     return () => clearInterval(interval)
-  }, [texts, textIdx, timer])
+  }, [texts, timer])
 
   useEffect(() => {
     setTransition('in')
