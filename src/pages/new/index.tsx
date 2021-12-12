@@ -5,7 +5,7 @@ import Panel from '@/components/common/Panel'
 
 function NewPage() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  // TODO: style된 component 빼야됨
+  // TODO: input components primitives 로 빼는 걸 생각해봐야됨
   return (
     <Panel
       css={{
@@ -13,7 +13,7 @@ function NewPage() {
       }}
     >
       <StyledInput type="text" placeholder="Subject" />
-      <StyledTextArea rows={5} ref={textareaRef} placeholder="Short" />
+      <StyledTextArea rows={5} ref={textareaRef} placeholder="Desciprtion" />
     </Panel>
   )
 }
@@ -39,6 +39,7 @@ const StyledInput = styled('input', {
   '&::placeholder': {
     // color: 'transparent',
     transition: 'color .4s ease',
+    fontStyle: 'italic',
   },
 
   '&:focus, &:focus-visible': {
@@ -74,6 +75,7 @@ const StyledTextArea = styled(TextareaAutosize, {
   '&::placeholder': {
     // color: 'transparent',
     transition: 'color .4s ease',
+    fontStyle: 'italic',
   },
 
   '&:focus, &:focus-visible': {

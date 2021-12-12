@@ -6,7 +6,7 @@ import Layout from '@/components/layouts/Layout'
 import { useMemo } from 'react'
 
 // FIXME: have to congifure this
-const layeredPages = ['/', '/twe', '/sample', '/sample/form']
+const layeredPages = ['/', '/new', '/sample', '/sample/form']
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()

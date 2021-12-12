@@ -7,19 +7,21 @@ export type ReplacedTextsProps = {
   timer?: number
 } & React.ComponentProps<typeof Text>
 
-// FIXME: 초기에 텍스트가 보이지 않는 구간이 존재하는데 왜 그런지 파악이 안됨
+// TODO: refactor when texts.length is 0
 function ReplacedTexts({ texts, timer = 5000, ...props }: ReplacedTextsProps) {
-  const [textIdx, setTextIdx] = useState<number | null>(null)
+  const [textIdx, setTextIdx] = useState<number>(0)
   const [transition, setTransition] = useState<'in' | 'out'>('in')
 
   const transitionTimer = useMemo(() => timer * 0.8, [timer])
   const text = useMemo(() => {
-    if (textIdx === null) return null
+    if (texts.length === 0) return ''
 
     return texts[textIdx]
   }, [texts, textIdx])
 
   useEffect(() => {
+    if (texts.length === 0) return
+
     const interval = setInterval(() => {
       setTextIdx((prevIdx) => {
         if (prevIdx === null) return 0
@@ -30,9 +32,11 @@ function ReplacedTexts({ texts, timer = 5000, ...props }: ReplacedTextsProps) {
     }, timer)
 
     return () => clearInterval(interval)
-  }, [texts, timer])
+  }, [texts, textIdx, timer])
 
   useEffect(() => {
+    if (texts.length === 0) return
+
     setTransition('in')
 
     const interval = setInterval(() => {
@@ -40,7 +44,7 @@ function ReplacedTexts({ texts, timer = 5000, ...props }: ReplacedTextsProps) {
     }, transitionTimer)
 
     return () => clearInterval(interval)
-  }, [textIdx, transitionTimer])
+  }, [texts, textIdx, transitionTimer])
 
   return (
     <Text interactive={transition} {...props}>
