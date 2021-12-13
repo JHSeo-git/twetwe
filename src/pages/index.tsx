@@ -1,7 +1,7 @@
 import { styled } from '@stitches.js'
 import ReplacedTexts from '@/components/primitives/ReplacedTexts'
 
-const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 노트']
+const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 📦']
 
 function Home() {
   return (
