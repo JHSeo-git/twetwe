@@ -32,23 +32,23 @@
   "dependencies": {
     "@radix-ui/colors": "^0.1.7",
     "@stitches/react": "^1.2.5",
+    "@svgr/webpack": "^5.5.0",
     "next": "12.0.4",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.20.4",
     "react-spring": "^9.3.2",
-    "react-textarea-autosize": "^8.3.3"
+    "react-textarea-autosize": "^8.3.3",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
     "husky": "^7.0.4",
     "prettier": "^2.5.0",
-    "typescript": "4.5.2",
-    "url-loader": "^4.1.1"
+    "typescript": "4.5.2"
   }
 }
