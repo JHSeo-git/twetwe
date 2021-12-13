@@ -24,3 +24,19 @@ useful for something
 - [ReplacedTexts](../src/components/primitives/ReplacedTexts.tsx): animated text through chainging texts
 - [Texlider](../src/components/primitives/Texlider.tsx): clone of [yourhome.fb.com](https://yourhome.fb.com/)'s welcome page
 - [ThemeButton](../src/components/primitives/ThemeButton.tsx): button with a theme having a animated svg(clone of [joshwcomeau](https://www.joshwcomeau.com/))
+
+## Reference
+
+Thank you all sites
+
+### Offical document sites
+
+- [nextjs](https://nextjs.org)
+- [stitches](https://stitches.dev/)
+- [radix](https://www.radix-ui.com/)
+- [react-spring](https://react-spring.io/)
+
+### Useful sites
+
+- [yourhome.fb.com](https://yourhome.fb.com/)
+- [joshwcomeau](https://www.joshwcomeau.com/)
