@@ -1,5 +1,7 @@
 import { styled } from '@stitches.js'
 import ReplacedTexts from '@/components/primitives/ReplacedTexts'
+import Panel from '@/components/common/Panel'
+import AuthForm from '@/components/auth/AuthForm'
 
 const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 📦']
 
@@ -13,6 +15,13 @@ function Home() {
           </Content>
         </HeroWrap>
         {/* TODO: twe lists with ordering, filtering, searching... */}
+        <Panel
+          css={{
+            pt: '$5',
+          }}
+        >
+          <AuthForm />
+        </Panel>
       </Box>
     </Container>
   )

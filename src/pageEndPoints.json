@@ -6,6 +6,10 @@
       "path": "/"
     },
     {
+      "name": "New",
+      "path": "/new"
+    },
+    {
       "name": "Sample",
       "path": "/sample"
     },

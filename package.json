@@ -32,6 +32,7 @@
   "dependencies": {
     "@radix-ui/colors": "^0.1.7",
     "@stitches/react": "^1.2.5",
+    "@supabase/supabase-js": "^1.28.5",
     "@svgr/webpack": "^5.5.0",
     "next": "12.0.4",
     "next-themes": "^0.0.15",
@@ -40,6 +41,7 @@
     "react-hook-form": "^7.20.4",
     "react-spring": "^9.3.2",
     "react-textarea-autosize": "^8.3.3",
+    "recoil": "^0.5.2",
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
