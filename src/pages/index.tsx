@@ -1,7 +1,7 @@
 import { styled } from '@stitches.js'
 import ReplacedTexts from '@/components/primitives/ReplacedTexts'
 import Panel from '@/components/common/Panel'
-import AuthForm from '@/components/auth/AuthForm'
+import NextLink from '@/components/common/NextLink'
 
 const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 📦']
 
@@ -20,7 +20,7 @@ function Home() {
             pt: '$5',
           }}
         >
-          <AuthForm />
+          You should be <NextLink href="/entry">sign in</NextLink>
         </Panel>
       </Box>
     </Container>

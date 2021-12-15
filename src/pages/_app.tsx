@@ -7,7 +7,7 @@ import { useMemo } from 'react'
 import { RecoilRoot } from 'recoil'
 
 // FIXME: have to congifure this
-const layeredPages = ['/', '/new', '/sample', '/sample/form']
+const layeredPages = ['/', '/new', '/entry', '/sample', '/sample/form']
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
