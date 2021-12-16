@@ -9,6 +9,14 @@ const BaseInput = styled('input', {
   py: '$2',
   px: '$2',
   br: '$1',
+
+  variants: {
+    variant: {
+      error: {
+        borderColor: '$crimson9',
+      },
+    },
+  },
 })
 
 export default BaseInput
