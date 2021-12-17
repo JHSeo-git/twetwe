@@ -1,7 +1,9 @@
 import BaseInput from '@/components/common/BaseInput'
+import NextLink from '@/components/common/NextLink'
 import Panel from '@/components/common/Panel'
+import useAuth from '@/hooks/entry/useAuth'
+import useEntry from '@/hooks/entry/useEntry'
 import { styled } from '@stitches.js'
-import { useMemo, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 /**
@@ -13,35 +15,47 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-type AuthState = 'login' | 'signup'
 type FormInputs = {
   email: string
-  password: string
 }
 
 function EntryPage() {
-  const [authState, setAuthState] = useState<AuthState>('login')
-  const AuthStateMessage = useMemo(
-    () => (authState === 'login' ? 'Login' : 'Sign Up'),
-    [authState]
-  )
+  const { user } = useAuth()
+  const { entry, loading, error } = useEntry()
 
-  const onClickAuthState = () => {
-    setAuthState((prev) => (prev === 'login' ? 'signup' : 'login'))
-  }
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FormInputs>()
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log(data)
+    // TODO: call api
+    entry(data.email).then((user) => console.log(user))
+  }
+
+  if (user) {
+    return (
+      <Panel
+        css={{
+          height: '100%',
+          display: 'flex',
+          jc: 'center',
+          ai: 'center',
+        }}
+      >
+        <Comment>You already logged in</Comment>
+        <StyledLink href="/">Go Home</StyledLink>
+      </Panel>
+    )
   }
 
   return (
     <Panel
       css={{
-        pt: '$8',
+        height: '100%',
+        display: 'flex',
+        jc: 'center',
+        ai: 'center',
       }}
     >
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -61,36 +75,17 @@ function EntryPage() {
         {errors.email && (
           <Comment variant="red">{errors.email.message}</Comment>
         )}
-        <FormInput
-          {...register('password', {
-            required: 'Password is required',
-            min: {
-              value: 8,
-              message: 'Password must be at least 8 characters',
-            },
-          })}
-          variant={errors.password && 'error'}
-          type="password"
-          placeholder="Password"
-        />
-        {errors.password && (
-          <Comment variant="red">{errors.password.message}</Comment>
-        )}
-        <SubmitButton type="submit">{AuthStateMessage}</SubmitButton>
-        <Comment>
-          {authState === 'login'
-            ? 'Already have an account?'
-            : 'Don’t have an account?'}
-          <ButtonLikeLink type="button" onClick={onClickAuthState}>
-            {AuthStateMessage}
-          </ButtonLikeLink>
-        </Comment>
+        <SubmitButton type="submit" disabled={loading}>
+          {loading ? 'loading...' : 'Sign In'}
+        </SubmitButton>
       </Form>
     </Panel>
   )
 }
 
 const Form = styled('form', {
+  width: '100%',
+
   display: 'flex',
   flexDirection: 'column',
   ai: 'center',
@@ -99,15 +94,13 @@ const Form = styled('form', {
 const FormInput = styled(BaseInput, {
   maxWidth: '25rem',
   width: '100%',
-  '&:not(:first-child)': {
-    mt: '$2',
-  },
 })
 
 const SubmitButton = styled('button', {
-  cursor: 'pointer',
   maxWidth: '25rem',
   width: '100%',
+
+  cursor: 'pointer',
 
   bc: '$loContrast',
   color: '$hiContrast',
@@ -116,7 +109,7 @@ const SubmitButton = styled('button', {
   p: '$2',
   br: '$1',
 
-  my: '$2',
+  mt: '$2',
 
   transition: 'background-color .2s ease',
 
@@ -124,6 +117,11 @@ const SubmitButton = styled('button', {
     '&:hover': {
       bc: '$blue2',
     },
+  },
+
+  '&:disabled': {
+    pointerEvents: 'none',
+    opacity: 0.4,
   },
 })
 
@@ -139,16 +137,10 @@ const Comment = styled('p', {
   },
 })
 
-const ButtonLikeLink = styled('button', {
-  cursor: 'pointer',
-  border: 'none',
-
-  p: 0,
-  ml: '$1',
-
-  bc: 'inherit',
-  color: '$blue9',
-  textTransform: 'capitalize',
+const StyledLink = styled(NextLink, {
+  display: 'block',
+  ml: '$2',
+  color: '$blue11',
 })
 
 export default EntryPage
