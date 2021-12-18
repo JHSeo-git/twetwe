@@ -17,6 +17,12 @@ export async function signIn(email: string) {
   return { user, error }
 }
 
+export async function signOut() {
+  const { error } = await supabaseClient.auth.signOut()
+
+  return { error }
+}
+
 export async function signInWithProvider(provider: Provider) {
   const { user, error } = await supabaseClient.auth.signIn({
     provider,

@@ -25,8 +25,8 @@ function NextLink({ href, children, ...props }: NextLinkProps) {
   }
 
   return (
-    <StyledLink {...props} href={linkInfo.href} passHref>
-      <a>{children}</a>
+    <StyledLink {...props} as="a" href={linkInfo.href}>
+      {children}
     </StyledLink>
   )
 }

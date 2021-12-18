@@ -1,10 +1,11 @@
 import BaseInput from '@/components/common/BaseInput'
 import NextLink from '@/components/common/NextLink'
 import Panel from '@/components/common/Panel'
-import useAuth from '@/hooks/entry/useAuth'
-import useEntry from '@/hooks/entry/useEntry'
+import useSession from '@/hooks/auth/useSession'
+import useEntry from '@/hooks/auth/useEntry'
 import { styled } from '@stitches.js'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import useLogout from '@/hooks/auth/useLogout'
 
 /**
  * @see https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/fast/forms/resources/ValidityState-typeMismatch-email.js?q=ValidityState-typeMismatch-email.js&ss=chromium
@@ -20,8 +21,9 @@ type FormInputs = {
 }
 
 function EntryPage() {
-  const { user } = useAuth()
+  const session = useSession()
   const { entry, loading, error } = useEntry()
+  const { logout, loading: logoutLoading, error: logoutError } = useLogout()
 
   const {
     register,
@@ -33,18 +35,24 @@ function EntryPage() {
     entry(data.email).then((user) => console.log(user))
   }
 
-  if (user) {
+  if (session) {
     return (
       <Panel
         css={{
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
           jc: 'center',
           ai: 'center',
         }}
       >
-        <Comment>You already logged in</Comment>
-        <StyledLink href="/">Go Home</StyledLink>
+        <Box>
+          <Comment>You already logged in.</Comment>
+          <StyledLink href="/">Go Home</StyledLink>
+        </Box>
+        <SubmitButton onClick={logout} size="small" disabled={logoutLoading}>
+          Logout
+        </SubmitButton>
       </Panel>
     )
   }
@@ -123,6 +131,15 @@ const SubmitButton = styled('button', {
     pointerEvents: 'none',
     opacity: 0.4,
   },
+
+  variants: {
+    size: {
+      small: {
+        p: '$1',
+        maxWidth: '10rem',
+      },
+    },
+  },
 })
 
 const Comment = styled('p', {
@@ -137,9 +154,16 @@ const Comment = styled('p', {
   },
 })
 
+const Box = styled('div', {
+  display: 'flex',
+})
+
 const StyledLink = styled(NextLink, {
+  fontSize: '$sm',
+  textDecoration: 'none',
+
   display: 'block',
-  ml: '$2',
+  ml: '$1',
   color: '$blue11',
 })
 
