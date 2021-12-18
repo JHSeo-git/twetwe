@@ -1,18 +1,15 @@
-import { atom, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { AuthSession } from '@supabase/supabase-js'
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
 
-const visibleAuthModalState = atom({
-  key: 'visibleAuthModalState',
-  default: false,
+const sessionState = atom<AuthSession | null>({
+  key: 'sessionState',
+  default: null,
 })
 
-export function useVisibleAuthModalState() {
-  return useRecoilState(visibleAuthModalState)
+export function useSessionState() {
+  return useRecoilState(sessionState)
 }
 
-export function useVisibleAuthModalValue() {
-  return useRecoilValue(visibleAuthModalState)
-}
-
-export function useSetVisibleAuthModal() {
-  return useSetRecoilState(visibleAuthModalState)
+export function useSessionValue() {
+  return useRecoilValue(sessionState)
 }

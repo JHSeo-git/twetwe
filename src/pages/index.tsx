@@ -2,12 +2,12 @@ import { styled } from '@stitches.js'
 import ReplacedTexts from '@/components/primitives/ReplacedTexts'
 import Panel from '@/components/common/Panel'
 import NextLink from '@/components/common/NextLink'
-import useSession from '@/hooks/auth/useSession'
+import { useSessionValue } from '@/store/auth'
 
 const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 📦']
 
 function Home() {
-  const session = useSession()
+  const session = useSessionValue()
 
   return (
     <Container>

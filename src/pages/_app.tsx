@@ -5,6 +5,7 @@ import { darkThemeClassName, lightThemeClassName } from '@stitches.js'
 import Layout from '@/components/layouts/Layout'
 import { useMemo } from 'react'
 import { RecoilRoot } from 'recoil'
+import AuthSessionContext from '@/components/auth/AuthSessionContext'
 
 // FIXME: have to congifure this
 const layeredPages = ['/', '/new', '/entry', '/sample', '/sample/form']
@@ -25,9 +26,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       defaultTheme="system"
     >
       <RecoilRoot>
-        <Layout naked={nakedLayout}>
-          <Component {...pageProps} />
-        </Layout>
+        <AuthSessionContext>
+          <Layout naked={nakedLayout}>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthSessionContext>
       </RecoilRoot>
     </ThemeProvider>
   )

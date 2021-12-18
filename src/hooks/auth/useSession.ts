@@ -1,9 +1,10 @@
 import { supabaseClient } from '@/lib/supabaseClient'
+import { useSessionState } from '@/store/auth'
 import { AuthSession } from '@supabase/supabase-js'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 export default function useSession() {
-  const [session, setSession] = useState<AuthSession | null>(null)
+  const [session, setSession] = useSessionState()
 
   useEffect(() => {
     setSession(supabaseClient.auth.session())
@@ -13,7 +14,7 @@ export default function useSession() {
         setSession(session)
       }
     )
-  }, [])
+  }, [setSession])
 
   return session
 }
