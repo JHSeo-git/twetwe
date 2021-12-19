@@ -27,7 +27,7 @@ useful for something
 
 ## Reference
 
-Thank you all sites
+helpful links
 
 ### Offical document sites
 
