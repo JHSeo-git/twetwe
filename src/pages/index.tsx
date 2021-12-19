@@ -1,14 +1,10 @@
 import { styled } from '@stitches.js'
 import ReplacedTexts from '@/components/primitives/ReplacedTexts'
 import Panel from '@/components/common/Panel'
-import NextLink from '@/components/common/NextLink'
-import { useSessionValue } from '@/store/auth'
 
 const HeroTexts = ['TWE TWE', '퉤 퉤', '잊어버리지 않기 위한', '나만의 📦']
 
 function Home() {
-  const session = useSessionValue()
-
   return (
     <Container>
       <Box>
@@ -22,15 +18,7 @@ function Home() {
           css={{
             pt: '$5',
           }}
-        >
-          {session ? (
-            <p>You logged in</p>
-          ) : (
-            <p>
-              You should be <NextLink href="/entry">sign in</NextLink>
-            </p>
-          )}
-        </Panel>
+        ></Panel>
       </Box>
     </Container>
   )

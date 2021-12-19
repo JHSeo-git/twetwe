@@ -7,8 +7,6 @@ export type AuthSessionContextProps = {
 function AuthSessionContext({ children }: AuthSessionContextProps) {
   const session = useSession()
 
-  console.log('Context: ', session)
-
   return <>{children}</>
 }
 

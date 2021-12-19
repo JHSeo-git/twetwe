@@ -84,7 +84,7 @@ function EntryPage() {
           <Comment variant="red">{errors.email.message}</Comment>
         )}
         <SubmitButton type="submit" disabled={loading}>
-          {loading ? 'loading...' : 'Sign In'}
+          {loading ? 'loading...' : 'Send Magic Link'}
         </SubmitButton>
       </Form>
     </Panel>
