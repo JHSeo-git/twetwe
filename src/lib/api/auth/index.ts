@@ -9,10 +9,15 @@ export async function signUp(email: string) {
   return { user, error }
 }
 
-export async function signIn(email: string) {
-  const { user, error } = await supabaseClient.auth.signIn({
-    email,
-  })
+export async function signIn(email: string, redirectTo?: string) {
+  const { user, error } = await supabaseClient.auth.signIn(
+    {
+      email,
+    },
+    {
+      ...(redirectTo ? { redirectTo } : undefined),
+    }
+  )
 
   return { user, error }
 }

@@ -1,5 +1,8 @@
-import { signIn, signUp } from '@/lib/api/auth'
+import { signIn } from '@/lib/api/auth'
 import { useState } from 'react'
+
+const isDev = process.env.NODE_ENV === 'development'
+const redirectTo = isDev ? 'http://localhost:3000' : undefined
 
 /**
  * Hook to get the entry data
@@ -12,7 +15,7 @@ export default function useEntry() {
     try {
       setLoading(true)
 
-      const response = await signIn(email)
+      const response = await signIn(email, redirectTo)
 
       if (response.error) {
         console.error(response.error)
