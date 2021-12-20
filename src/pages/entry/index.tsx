@@ -32,7 +32,7 @@ function EntryPage() {
   } = useForm<FormInputs>()
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     // TODO: call api
-    entry(data.email).then((user) => console.log(user))
+    entry(data.email)
   }
 
   if (session) {

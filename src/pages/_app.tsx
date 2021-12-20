@@ -6,9 +6,17 @@ import Layout from '@/components/layouts/Layout'
 import { useMemo } from 'react'
 import { RecoilRoot } from 'recoil'
 import AuthSessionContext from '@/components/auth/AuthSessionContext'
+import DebugObserver from '@/components/_debug/DebugObserver'
 
 // FIXME: have to congifure this
-const layeredPages = ['/', '/new', '/entry', '/sample', '/sample/form']
+const layeredPages = [
+  '/',
+  '/new',
+  '/entry',
+  '/setting',
+  '/sample',
+  '/sample/form',
+]
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   globalStyles()
@@ -26,6 +34,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       defaultTheme="system"
     >
       <RecoilRoot>
+        <DebugObserver />
         <AuthSessionContext>
           <Layout naked={nakedLayout}>
             <Component {...pageProps} />
