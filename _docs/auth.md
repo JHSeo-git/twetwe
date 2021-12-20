@@ -26,7 +26,7 @@ Email을 이용한 자체회원은 이메일을 기입하여 Entry합니다.
 4. 입력한 Email로 로그인 할 수 있는 링크 발송
 5. 해당 링크 클릭을 통한 로그인
 
-### OAuth Entry
+### OAuth Entry(not yet)
 
 OAtuth 제공 리스트는 다음과 같습니다.
 
