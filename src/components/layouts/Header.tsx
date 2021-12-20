@@ -3,17 +3,35 @@ import { ReactComponent as LogoSvg } from '@/assets/icons/twe-logo.svg'
 import Panel from '../common/Panel'
 import NextLink from '../common/NextLink'
 import ThemeButton from '../primitives/ThemeButton'
+import { useSessionValue } from '@/store/auth'
 
-export type HeaderProps = {}
+function Header() {
+  const session = useSessionValue()
 
-function Header(props: HeaderProps) {
   return (
     <HeaderBox>
       <HeaderPanel>
-        <StyledLink href="/">
-          <Logo />
-        </StyledLink>
-        <ThemeButton />
+        <HeaderCol>
+          <StyledLink css={{ mr: '$6' }} href="/">
+            <Logo />
+          </StyledLink>
+          <HeaderNav aria-label="desktop navigation">
+            <HeaderNavList>
+              {session ? (
+                <HeaderNavItem>
+                  <NavLink href="/setting">Setting</NavLink>
+                </HeaderNavItem>
+              ) : (
+                <HeaderNavItem>
+                  <NavLink href="/entry">Entry</NavLink>
+                </HeaderNavItem>
+              )}
+            </HeaderNavList>
+          </HeaderNav>
+        </HeaderCol>
+        <HeaderCol>
+          <ThemeButton />
+        </HeaderCol>
       </HeaderPanel>
     </HeaderBox>
   )
@@ -28,10 +46,6 @@ const HeaderBox = styled('header', {
   width: '100%',
 })
 
-const Logo = styled(LogoSvg, {
-  height: '2rem',
-})
-
 const HeaderPanel = styled(Panel, {
   height: '100%',
 
@@ -40,10 +54,40 @@ const HeaderPanel = styled(Panel, {
   ai: 'center',
 })
 
+const HeaderCol = styled('div', {
+  display: 'flex',
+  ai: 'center',
+})
+
+const Logo = styled(LogoSvg, {
+  height: '2rem',
+})
+
 const StyledLink = styled(NextLink, {
   display: 'flex',
   jc: 'center',
   ai: 'center',
+})
+
+const HeaderNav = styled('nav', {})
+
+const HeaderNavList = styled('ul', {
+  listStyle: 'none',
+  display: 'flex',
+  p: 0,
+})
+
+const HeaderNavItem = styled('li', {
+  m: '$2',
+})
+
+const NavLink = styled(NextLink, {
+  textDecoration: 'none',
+  color: '$mauve12',
+
+  fontWeight: 'bold',
+  fontSize: '$sm',
+  p: '$2',
 })
 
 export default Header
