@@ -4,9 +4,11 @@ import Panel from '../common/Panel'
 import NextLink from '../common/NextLink'
 import ThemeButton from '../primitives/ThemeButton'
 import { useSessionValue } from '@/store/auth'
+import { useRouter } from 'next/dist/client/router'
 
 function Header() {
   const session = useSessionValue()
+  const { pathname } = useRouter()
 
   return (
     <HeaderBox>
@@ -19,11 +21,15 @@ function Header() {
             <HeaderNavList>
               {session ? (
                 <HeaderNavItem>
-                  <NavLink href="/setting">Setting</NavLink>
+                  <NavLink href="/setting" current={pathname === '/setting'}>
+                    Setting
+                  </NavLink>
                 </HeaderNavItem>
               ) : (
                 <HeaderNavItem>
-                  <NavLink href="/entry">Entry</NavLink>
+                  <NavLink href="/entry" current={pathname === '/entry'}>
+                    Entry
+                  </NavLink>
                 </HeaderNavItem>
               )}
             </HeaderNavList>
@@ -88,6 +94,14 @@ const NavLink = styled(NextLink, {
   fontWeight: 'bold',
   fontSize: '$sm',
   p: '$2',
+
+  variants: {
+    current: {
+      true: {
+        color: '$blue10',
+      },
+    },
+  },
 })
 
 export default Header
