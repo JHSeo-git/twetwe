@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@radix-ui/colors": "^0.1.7",
+    "@radix-ui/react-id": "^0.1.4",
     "@stitches/react": "^1.2.5",
     "@supabase/supabase-js": "^1.28.5",
     "@svgr/webpack": "^5.5.0",
