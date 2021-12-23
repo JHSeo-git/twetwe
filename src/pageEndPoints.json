@@ -20,6 +20,10 @@
     {
       "name": "SampleForm",
       "path": "/sample/form"
+    },
+    {
+      "name": "Setting",
+      "path": "/setting"
     }
   ]
 }
