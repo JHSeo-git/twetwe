@@ -1,4 +1,4 @@
-import BaseToggle from '@/components/common/BaseToggle'
+import ToggleButton from '@/components/primitives/ToggleButton'
 import Panel from '@/components/common/Panel'
 import { styled } from '@stitches.js'
 
@@ -8,7 +8,9 @@ function SettingPage(props: SettingPageProps) {
   return (
     <Container>
       <Panel>
-        <BaseToggle label="토글" />
+        <ToggleButton label="토글" />
+        <ToggleButton />
+        <ToggleButton />
       </Panel>
     </Container>
   )
