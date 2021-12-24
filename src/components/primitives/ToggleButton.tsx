@@ -3,9 +3,10 @@ import { useState } from 'react'
 
 type ToggleButtonProps = {
   label?: string
-} & React.ComponentProps<typeof ToggleInput>
+  size?: 'small' | 'large'
+}
 
-function ToggleButton({ label, ...props }: ToggleButtonProps) {
+function ToggleButton({ label, size = 'large' }: ToggleButtonProps) {
   const [checked, setChecked] = useState(false)
 
   const onClick = () => {
@@ -16,14 +17,13 @@ function ToggleButton({ label, ...props }: ToggleButtonProps) {
     <ToggleWrapper>
       {label && <ToggleLabel>{label}</ToggleLabel>}
       <ToggleBox onClick={onClick} role="button" tabIndex={-1}>
-        <ToggleTrack checked={checked ? 'on' : 'off'} />
-        <ToggleThumb checked={checked ? 'on' : 'off'} />
+        <ToggleTrack size={size} checked={checked ? 'on' : 'off'} />
+        <ToggleThumb size={size} checked={checked ? 'on' : 'off'} />
         <ToggleInput
           type="checkbox"
           aria-label="switch between dark and light mode"
           checked={checked}
           readOnly
-          {...props}
         />
       </ToggleBox>
     </ToggleWrapper>
@@ -69,7 +69,20 @@ const ToggleTrack = styled('div', {
   bc: '$mauve10',
   transition: '.25s ease-in-out',
 
+  defaultVariants: {
+    size: 'large',
+  },
   variants: {
+    size: {
+      small: {
+        width: '2rem',
+        height: '1rem',
+      },
+      large: {
+        width: '3rem',
+        height: '1.5rem',
+      },
+    },
     checked: {
       on: {
         bc: '$blue10',
@@ -89,13 +102,27 @@ const ToggleThumb = styled('div', {
   left: '0.125rem',
   transition: '.25s ease-in-out',
   transform: 'translateY(-50%)',
+
   width: '1.25rem',
   height: '1.25rem',
 
   br: '$round',
   bc: '$mauve3',
 
+  defaultVariants: {
+    size: 'large',
+  },
   variants: {
+    size: {
+      small: {
+        width: '0.75rem',
+        height: '0.75rem',
+      },
+      large: {
+        width: '1.25rem',
+        height: '1.25rem',
+      },
+    },
     checked: {
       on: {
         transform: 'translateY(-50%) translateX(1.5rem)',
@@ -105,6 +132,15 @@ const ToggleThumb = styled('div', {
       },
     },
   },
+  compoundVariants: [
+    {
+      size: 'small',
+      checked: 'on',
+      css: {
+        transform: 'translateY(-50%) translateX(1rem)',
+      },
+    },
+  ],
 })
 
 export default ToggleButton
