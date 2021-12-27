@@ -108,6 +108,7 @@ const ToggleThumb = styled('div', {
 
   br: '$round',
   bc: '$mauve3',
+  bs: '$muiShadow2',
 
   defaultVariants: {
     size: 'large',
