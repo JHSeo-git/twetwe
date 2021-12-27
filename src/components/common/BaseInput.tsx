@@ -10,7 +10,7 @@ const BaseInput = styled('input', {
   px: '$2',
   br: '$1',
 
-  transition: 'box-shadow .2s ease, border .2s ease',
+  transition: 'border .2s ease',
 
   '@hover': {
     '&:hover': {
@@ -18,7 +18,6 @@ const BaseInput = styled('input', {
     },
   },
   '&:focus, &:focus-visible': {
-    bs: '$interactiveShadow2',
     border: '0.0625rem solid $mauve11',
   },
 
@@ -26,6 +25,15 @@ const BaseInput = styled('input', {
     variant: {
       error: {
         borderColor: '$crimson9',
+
+        '@hover': {
+          '&:hover': {
+            border: '0.0625rem solid $crimson9',
+          },
+        },
+        '&:focus, &:focus-visible': {
+          border: '0.0625rem solid $crimson9',
+        },
       },
     },
   },

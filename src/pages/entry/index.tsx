@@ -6,6 +6,8 @@ import useEntry from '@/hooks/auth/useEntry'
 import { styled } from '@stitches.js'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useLogout from '@/hooks/auth/useLogout'
+import { useMemo, useState } from 'react'
+import { is } from '@react-spring/shared'
 
 /**
  * @see https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/fast/forms/resources/ValidityState-typeMismatch-email.js?q=ValidityState-typeMismatch-email.js&ss=chromium
@@ -24,15 +26,31 @@ function EntryPage() {
   const session = useSession()
   const { entry, loading, error } = useEntry()
   const { logout, loading: logoutLoading, error: logoutError } = useLogout()
+  const [isSend, setIsSend] = useState(false)
+
+  const buttonMessage = useMemo(() => {
+    if (isSend) return 'Retry send email'
+    return 'Send Magic Link'
+  }, [isSend])
+
+  const confirmMessage = useMemo(() => {
+    if (error) return error
+    if (isSend) return 'Confirm your email'
+    return null
+  }, [error, isSend])
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FormInputs>()
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    // TODO: call api
-    entry(data.email)
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    try {
+      await entry(data.email)
+      setIsSend(true)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   if (session) {
@@ -53,6 +71,7 @@ function EntryPage() {
         <SubmitButton onClick={logout} size="small" disabled={logoutLoading}>
           Logout
         </SubmitButton>
+        {logoutError && <Comment variant="red">{logoutError}</Comment>}
       </Panel>
     )
   }
@@ -62,6 +81,7 @@ function EntryPage() {
       css={{
         height: '100%',
         display: 'flex',
+        flexDirection: 'column',
         jc: 'center',
         ai: 'center',
       }}
@@ -84,9 +104,14 @@ function EntryPage() {
           <Comment variant="red">{errors.email.message}</Comment>
         )}
         <SubmitButton type="submit" disabled={loading}>
-          {loading ? 'loading...' : 'Send Magic Link'}
+          {loading ? 'loading...' : buttonMessage}
         </SubmitButton>
       </Form>
+      {confirmMessage && (
+        <Comment css={{ mt: '$2' }} variant={error ? 'red' : 'blue'}>
+          {confirmMessage}
+        </Comment>
+      )}
     </Panel>
   )
 }
@@ -149,6 +174,9 @@ const Comment = styled('p', {
     variant: {
       red: {
         color: '$crimson9',
+      },
+      blue: {
+        color: '$blue9',
       },
     },
   },
