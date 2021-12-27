@@ -112,7 +112,7 @@ const SubmitButton = styled('button', {
 
   bc: '$loContrast',
   color: '$hiContrast',
-  border: '0.0625rem solid $mauve11',
+  border: '0.0625rem solid $mauve10',
 
   p: '$2',
   br: '$1',
