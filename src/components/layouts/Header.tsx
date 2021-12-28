@@ -95,6 +95,12 @@ const NavLink = styled(NextLink, {
   fontSize: '$sm',
   p: '$2',
 
+  '@hover': {
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+
   variants: {
     current: {
       true: {

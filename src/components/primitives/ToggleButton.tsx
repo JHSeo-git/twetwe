@@ -33,6 +33,7 @@ function ToggleButton({ label, size = 'large' }: ToggleButtonProps) {
 const ToggleWrapper = styled('div', {
   display: 'flex',
   ai: 'center',
+  jc: 'space-between',
 })
 
 const ToggleLabel = styled('span', {
@@ -67,7 +68,7 @@ const ToggleTrack = styled('div', {
   height: '1.5rem',
 
   bc: '$mauve10',
-  transition: '.25s ease-in-out',
+  transition: '.2s ease-in-out',
 
   defaultVariants: {
     size: 'large',
@@ -100,7 +101,7 @@ const ToggleThumb = styled('div', {
   position: 'absolute',
   top: '50%',
   left: '0.125rem',
-  transition: '.25s ease-in-out',
+  transition: '.2s ease-in-out',
   transform: 'translateY(-50%)',
 
   width: '1.25rem',
