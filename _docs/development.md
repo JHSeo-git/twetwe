@@ -55,6 +55,17 @@ based on [stitches](https://stitches.dev/) + [radix](https://radix-ui.com/)
 - animation: see [animation.ts](../src/styles/animation.ts)
 - react-spring: see [react-spring](https://react-spring.io/)
 
+## dynamic imports
+
+크리티컬 패스에 있는 번들에 대한 코드 스플리팅을 더 적절히 하기위해 사용합니다.
+번들링 사이즈를 bundle-analyzer를 통해 확인 후 피드백해야 합니다.
+
+```js
+import dynamic from 'next/dynamic'
+const Component = dynamic(() => import('./Component'))
+// 두 번째 파라미터에 옵션으로 { ssr: false }을 넣어주면 build 시 pre-rendering에서 제외됩니다.
+```
+
 ## Reference
 
 helpful links
