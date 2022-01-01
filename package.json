@@ -29,6 +29,13 @@
     "prepare-scripts": "yarn generate:endpoints",
     "postinstall": "yarn prepare-scripts && yarn prepare-husky"
   },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "next lint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@radix-ui/colors": "^0.1.7",
     "@radix-ui/react-id": "^0.1.4",
