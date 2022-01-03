@@ -1,13 +1,18 @@
 import { styled } from '@stitches.js'
-import { ReactComponent as LogoSvg } from '@/assets/icons/twe-logo.svg'
+import { useRouter } from 'next/router'
+
 import Panel from '../common/Panel'
 import NextLink from '../common/NextLink'
-import ThemeButton from '../primitives/ThemeButton'
-import { useSessionValue } from '@/store/auth'
-import { useRouter } from 'next/dist/client/router'
+// import ThemeButton from '../primitives/ThemeButton'
+import dynamic from 'next/dynamic'
+const ThemeButton = dynamic(() => import('../primitives/ThemeButton'))
+
+import { useIsFetchingValue, useSessionValue } from '@/store/auth'
+import { ReactComponent as LogoSvg } from '@/assets/icons/twe-logo.svg'
 
 function Header() {
   const session = useSessionValue()
+  const isFetching = useIsFetchingValue()
   const { pathname } = useRouter()
 
   return (
@@ -17,23 +22,25 @@ function Header() {
           <StyledLink css={{ mr: '$6' }} href="/">
             <Logo />
           </StyledLink>
-          <HeaderNav aria-label="desktop navigation">
-            <HeaderNavList>
-              {session ? (
-                <HeaderNavItem>
-                  <NavLink href="/setting" current={pathname === '/setting'}>
-                    Setting
-                  </NavLink>
-                </HeaderNavItem>
-              ) : (
-                <HeaderNavItem>
-                  <NavLink href="/entry" current={pathname === '/entry'}>
-                    Entry
-                  </NavLink>
-                </HeaderNavItem>
-              )}
-            </HeaderNavList>
-          </HeaderNav>
+          {isFetching && (
+            <HeaderNav aria-label="desktop navigation">
+              <HeaderNavList>
+                {session ? (
+                  <HeaderNavItem>
+                    <NavLink href="/setting" current={pathname === '/setting'}>
+                      Setting
+                    </NavLink>
+                  </HeaderNavItem>
+                ) : (
+                  <HeaderNavItem>
+                    <NavLink href="/entry" current={pathname === '/entry'}>
+                      Entry
+                    </NavLink>
+                  </HeaderNavItem>
+                )}
+              </HeaderNavList>
+            </HeaderNav>
+          )}
         </HeaderCol>
         <HeaderCol>
           <ThemeButton />

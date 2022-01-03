@@ -1,11 +1,11 @@
-import useSession from '@/hooks/auth/useSession'
+import useSessionEffect from '@/hooks/auth/useSessionEffect'
 
 export type AuthSessionContextProps = {
   children: React.ReactNode
 }
 
 function AuthSessionContext({ children }: AuthSessionContextProps) {
-  const session = useSession()
+  useSessionEffect()
 
   return <>{children}</>
 }

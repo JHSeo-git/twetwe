@@ -1,13 +1,15 @@
-import BaseInput from '@/components/common/BaseInput'
-import NextLink from '@/components/common/NextLink'
-import Panel from '@/components/common/Panel'
-import useSession from '@/hooks/auth/useSession'
-import useEntry from '@/hooks/auth/useEntry'
 import { styled } from '@stitches.js'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import useLogout from '@/hooks/auth/useLogout'
 import { useMemo, useState } from 'react'
-import { is } from '@react-spring/shared'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
+import Panel from '@/components/common/Panel'
+import NextLink from '@/components/common/NextLink'
+import BaseInput from '@/components/common/BaseInput'
+
+import useEntry from '@/hooks/auth/useEntry'
+import useLogout from '@/hooks/auth/useLogout'
+import useSession from '@/hooks/auth/useSessionEffect'
+import { useSessionValue } from '@/store/auth'
 
 /**
  * @see https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/fast/forms/resources/ValidityState-typeMismatch-email.js?q=ValidityState-typeMismatch-email.js&ss=chromium
@@ -23,7 +25,7 @@ type FormInputs = {
 }
 
 function EntryPage() {
-  const session = useSession()
+  const session = useSessionValue()
   const { entry, loading, error } = useEntry()
   const { logout, loading: logoutLoading, error: logoutError } = useLogout()
   const [isSend, setIsSend] = useState(false)

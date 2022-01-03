@@ -33,7 +33,6 @@
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [
       "prettier --write",
-      "next lint --fix",
       "git add"
     ]
   },
