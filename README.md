@@ -1,12 +1,14 @@
 # twetwe
 
-Collect on something!
+Some test.
 
-and Useful page with `<form />`!
+- motion
+- form
+- baas
 
 ## stack
 
-- frontend
-  - react
-  - nextjs: ^12.0.0 and use SWC
-  - recoil
+- react
+- nextjs: ^12.0.0 and use SWC
+- recoil
+- supabase
